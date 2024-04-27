@@ -24,6 +24,23 @@
         }
       ]
     },
+    "bump": {
+      "name": "bump",
+      "description": "Bumps version based on latest git tag and generates a changelog entry",
+      "env": {
+        "OUTFILE": "package.json",
+        "CHANGELOG": "dist/changelog.md",
+        "BUMPFILE": "dist/version.txt",
+        "RELEASETAG": "dist/releasetag.txt",
+        "RELEASE_TAG_PREFIX": ""
+      },
+      "steps": [
+        {
+          "builtin": "release/bump-version"
+        }
+      ],
+      "condition": "! git log --oneline -1 | grep -q \"chore(release):\""
+    },
     "clobber": {
       "name": "clobber",
       "description": "hard resets to HEAD of origin and cleans the local repo",
@@ -61,7 +78,10 @@
       "description": "Only compile",
       "steps": [
         {
-          "exec": "react-scripts build"
+          "exec": "tsc --build"
+        },
+        {
+          "exec": "vite build"
         }
       ]
     },
@@ -76,10 +96,10 @@
     },
     "dev": {
       "name": "dev",
-      "description": "Starts the react application",
+      "description": "Starts the vite application",
       "steps": [
         {
-          "exec": "react-scripts start"
+          "exec": "vite"
         }
       ]
     },
@@ -125,7 +145,15 @@
     },
     "package": {
       "name": "package",
-      "description": "Creates the distribution package"
+      "description": "Creates the distribution package",
+      "steps": [
+        {
+          "exec": "mkdir -p dist/js"
+        },
+        {
+          "exec": "mv $(pnpm pack) dist/js/"
+        }
+      ]
     },
     "post-compile": {
       "name": "post-compile",
@@ -139,15 +167,74 @@
       "name": "pre-compile",
       "description": "Prepare the project for compilation"
     },
+    "preview": {
+      "name": "preview",
+      "description": "Preview the vite application",
+      "steps": [
+        {
+          "exec": "vite preview"
+        }
+      ]
+    },
+    "release": {
+      "name": "release",
+      "description": "Prepare a release from \"main\" branch",
+      "env": {
+        "RELEASE": "true"
+      },
+      "steps": [
+        {
+          "exec": "rm -fr dist"
+        },
+        {
+          "spawn": "bump"
+        },
+        {
+          "spawn": "build"
+        },
+        {
+          "spawn": "unbump"
+        },
+        {
+          "exec": "git diff --ignore-space-at-eol --exit-code"
+        }
+      ]
+    },
     "test": {
       "name": "test",
       "description": "Run tests",
       "steps": [
         {
-          "spawn": "eslint"
+          "exec": "jest --passWithNoTests --updateSnapshot",
+          "receiveArgs": true
         },
         {
-          "exec": "react-scripts test --watchAll=false"
+          "spawn": "eslint"
+        }
+      ]
+    },
+    "test:watch": {
+      "name": "test:watch",
+      "description": "Run jest in watch mode",
+      "steps": [
+        {
+          "exec": "jest --watch"
+        }
+      ]
+    },
+    "unbump": {
+      "name": "unbump",
+      "description": "Restores version to 0.0.0",
+      "env": {
+        "OUTFILE": "package.json",
+        "CHANGELOG": "dist/changelog.md",
+        "BUMPFILE": "dist/version.txt",
+        "RELEASETAG": "dist/releasetag.txt",
+        "RELEASE_TAG_PREFIX": ""
+      },
+      "steps": [
+        {
+          "builtin": "release/reset-version"
         }
       ]
     },
@@ -159,13 +246,13 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@testing-library/jest-dom,@testing-library/react,@testing-library/user-event,@types/jest,@types/react,@types/react-dom,eslint-import-resolver-typescript,eslint-plugin-import,projen,ts-node,react,react-dom,web-vitals"
+          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/jest,@types/react,@types/react-dom,@vitejs/plugin-react-swc,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,jest,prettier,projen,ts-jest,ts-node,vite,react,react-dom"
         },
         {
-          "exec": "yarn install --check-files"
+          "exec": "pnpm i --no-frozen-lockfile"
         },
         {
-          "exec": "yarn upgrade @testing-library/jest-dom @testing-library/react @testing-library/user-event @types/jest @types/node @types/react @types/react-dom @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint projen react-scripts ts-node typescript react react-dom web-vitals"
+          "exec": "pnpm update @types/jest @types/node @types/react @types/react-dom @typescript-eslint/eslint-plugin @typescript-eslint/parser @vitejs/plugin-react-swc constructs eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint jest jest-junit prettier projen standard-version ts-jest ts-node typescript vite react react-dom"
         },
         {
           "exec": "npx projen"
@@ -186,7 +273,7 @@
     }
   },
   "env": {
-    "PATH": "$(npx -c \"node --print process.env.PATH\")"
+    "PATH": "$(pnpm -c exec \"node --print process.env.PATH\")"
   },
   "//": "~~ Generated by projen. To modify, edit .projenrc.ts and run \"npx projen\"."
 }

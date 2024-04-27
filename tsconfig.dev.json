@@ -8,11 +8,9 @@
     "inlineSourceMap": true,
     "inlineSources": true,
     "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
+      "es2019"
     ],
-    "module": "commonjs",
+    "module": "CommonJS",
     "noEmitOnError": false,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
@@ -25,12 +23,10 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "stripInternal": true,
-    "target": "es5",
-    "allowJs": true,
+    "target": "ES2020",
     "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx"
