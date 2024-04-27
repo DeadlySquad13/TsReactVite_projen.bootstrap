@@ -32,6 +32,7 @@ const RAW_RUNTIME_STATE =
           ["@types/react-dom", "npm:18.3.0"],\
           ["@typescript-eslint/eslint-plugin", "virtual:df756e0ef8353c1c68a65a29b95c5f03718a484bbc5c6cecb236112ded9c42e81404e0f80ba35a10b68b6c2e38e18485f081abae907ba0fe41243442723eb05f#npm:6.21.0"],\
           ["@typescript-eslint/parser", "virtual:df756e0ef8353c1c68a65a29b95c5f03718a484bbc5c6cecb236112ded9c42e81404e0f80ba35a10b68b6c2e38e18485f081abae907ba0fe41243442723eb05f#npm:6.21.0"],\
+          ["@vitejs/plugin-basic-ssl", "virtual:df756e0ef8353c1c68a65a29b95c5f03718a484bbc5c6cecb236112ded9c42e81404e0f80ba35a10b68b6c2e38e18485f081abae907ba0fe41243442723eb05f#npm:1.1.0"],\
           ["@vitejs/plugin-react-swc", "virtual:df756e0ef8353c1c68a65a29b95c5f03718a484bbc5c6cecb236112ded9c42e81404e0f80ba35a10b68b6c2e38e18485f081abae907ba0fe41243442723eb05f#npm:3.6.0"],\
           ["constructs", "npm:10.3.0"],\
           ["eslint", "npm:8.57.0"],\
@@ -2436,6 +2437,28 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../.yarn/berry/cache/@ungap-structured-clone-npm-1.2.0-648f0b82e0-10c0.zip/node_modules/@ungap/structured-clone/",\
         "packageDependencies": [\
           ["@ungap/structured-clone", "npm:1.2.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@vitejs/plugin-basic-ssl", [\
+      ["npm:1.1.0", {\
+        "packageLocation": "../../../.yarn/berry/cache/@vitejs-plugin-basic-ssl-npm-1.1.0-cc457f595f-10c0.zip/node_modules/@vitejs/plugin-basic-ssl/",\
+        "packageDependencies": [\
+          ["@vitejs/plugin-basic-ssl", "npm:1.1.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:df756e0ef8353c1c68a65a29b95c5f03718a484bbc5c6cecb236112ded9c42e81404e0f80ba35a10b68b6c2e38e18485f081abae907ba0fe41243442723eb05f#npm:1.1.0", {\
+        "packageLocation": "./.yarn/__virtual__/@vitejs-plugin-basic-ssl-virtual-044c80eaa2/4/.yarn/berry/cache/@vitejs-plugin-basic-ssl-npm-1.1.0-cc457f595f-10c0.zip/node_modules/@vitejs/plugin-basic-ssl/",\
+        "packageDependencies": [\
+          ["@vitejs/plugin-basic-ssl", "virtual:df756e0ef8353c1c68a65a29b95c5f03718a484bbc5c6cecb236112ded9c42e81404e0f80ba35a10b68b6c2e38e18485f081abae907ba0fe41243442723eb05f#npm:1.1.0"],\
+          ["@types/vite", null],\
+          ["vite", "virtual:df756e0ef8353c1c68a65a29b95c5f03718a484bbc5c6cecb236112ded9c42e81404e0f80ba35a10b68b6c2e38e18485f081abae907ba0fe41243442723eb05f#npm:5.2.10"]\
+        ],\
+        "packagePeers": [\
+          "@types/vite",\
+          "vite"\
         ],\
         "linkType": "HARD"\
       }]\
@@ -7437,6 +7460,7 @@ const RAW_RUNTIME_STATE =
           ["@types/react-dom", "npm:18.3.0"],\
           ["@typescript-eslint/eslint-plugin", "virtual:df756e0ef8353c1c68a65a29b95c5f03718a484bbc5c6cecb236112ded9c42e81404e0f80ba35a10b68b6c2e38e18485f081abae907ba0fe41243442723eb05f#npm:6.21.0"],\
           ["@typescript-eslint/parser", "virtual:df756e0ef8353c1c68a65a29b95c5f03718a484bbc5c6cecb236112ded9c42e81404e0f80ba35a10b68b6c2e38e18485f081abae907ba0fe41243442723eb05f#npm:6.21.0"],\
+          ["@vitejs/plugin-basic-ssl", "virtual:df756e0ef8353c1c68a65a29b95c5f03718a484bbc5c6cecb236112ded9c42e81404e0f80ba35a10b68b6c2e38e18485f081abae907ba0fe41243442723eb05f#npm:1.1.0"],\
           ["@vitejs/plugin-react-swc", "virtual:df756e0ef8353c1c68a65a29b95c5f03718a484bbc5c6cecb236112ded9c42e81404e0f80ba35a10b68b6c2e38e18485f081abae907ba0fe41243442723eb05f#npm:3.6.0"],\
           ["constructs", "npm:10.3.0"],\
           ["eslint", "npm:8.57.0"],\
