@@ -260,4 +260,6 @@ if (installCiTask) {
   installCiTask.reset("yarn install --frozen-lockfile");
 }
 
+project.gitignore.addPatterns(".direnv");
+
 project.synth();

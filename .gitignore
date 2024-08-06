@@ -58,4 +58,5 @@ junit.xml
 /dist/
 !/.eslintrc.json
 !/vite.config.ts
+.direnv
 !/.projenrc.ts
