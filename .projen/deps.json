@@ -88,6 +88,10 @@
       "type": "build"
     },
     {
+      "name": "tsx",
+      "type": "build"
+    },
+    {
       "name": "typescript",
       "version": "^5.0.0",
       "type": "build"
@@ -97,11 +101,19 @@
       "type": "build"
     },
     {
+      "name": "konva",
+      "type": "runtime"
+    },
+    {
       "name": "react",
       "type": "runtime"
     },
     {
       "name": "react-dom",
+      "type": "runtime"
+    },
+    {
+      "name": "react-konva",
       "type": "runtime"
     }
   ],
