@@ -24,8 +24,8 @@
         }
       ]
     },
-    "build_": {
-      "name": "build_",
+    "build_projen": {
+      "name": "build_projen",
       "steps": [
         {
           "exec": "yarn tsx --tsconfig tsconfig.dev.json .projenrc.ts"

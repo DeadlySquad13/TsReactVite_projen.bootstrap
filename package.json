@@ -2,7 +2,7 @@
   "name": "projen-vite",
   "scripts": {
     "build": "npx projen build",
-    "build_": "npx projen build_",
+    "build_projen": "npx projen build_projen",
     "bump": "npx projen bump",
     "clobber": "npx projen clobber",
     "compile": "npx projen compile",
